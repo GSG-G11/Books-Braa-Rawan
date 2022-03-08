@@ -10,32 +10,57 @@ fetch('/author')
     });
 });
 
-fetch('/getBook')
-.then(res=>res.json())
-.then(data=>{
-    const wrapper = document.querySelector('.wrapper');
-    const box = document.querySelector('.box');
-    const row = document.querySelector('.row2');
-    const info = document.querySelector('.info')
-data.forEach(e=>{
-    const title = document.createElement('h3');
-    title.className='titel';
-    title.textContent=e.name;
-    box.appendChild(title);
-    const authorName = document.createElement('div');
-    authorName.className='author';
-    authorName.textContent=e.author;
-    info.appendChild(authorName);
-    const bookPrice = document.createElement('div');
-    bookPrice.className='price';
-    bookPrice.textContent=e.price ,'$';
-    info.appendChild(bookPrice);
-    const btn = document.createElement('button');
-    btn.className='Delete';
-    btn.textContent='Delete';
-    row.appendChild(btn);
+const delBook = (id) => fetch(`/delete/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+  })
+  
+  fetch('/getBook')
+  .then(res=>res.json())
+  .then(data=>{
+      const wrapper = document.querySelector('.wrapper');
+  data.forEach(e=>{
+      const box = document.createElement('div');
+      box.className='box';
+      wrapper.appendChild(box);
+  
+      const title = document.createElement('h3');
+      title.className='titel';
+      title.textContent=e.name;
+      box.appendChild(title);
+  
+      const info = document.createElement('div');
+      info.className='info';
+      box.appendChild(info);
+  
+      const authorName = document.createElement('div');
+      authorName.className='author';
+      authorName.textContent=e.author;
+      info.appendChild(authorName);
+  
+      const bookPrice = document.createElement('div');
+      bookPrice.className='price';
+      bookPrice.textContent=e.price ,'$';
+      info.appendChild(bookPrice);
+  
+      const row = document.createElement('div');
+      row.className='row2';
+      wrapper.appendChild(row);
+  
+      const btn = document.createElement('button');
+      btn.className='Delete';
+      btn.textContent='Delete';
+      btn.onclick =()=>{
+          console.log(e.id);
+          delBook(e.id)
+          .then( window.location.assign('/'))
+      }
 
-    wrapper.appendChild(box);
-    box.appendChild(row);
-})
-})
+      row.appendChild(btn);
+      wrapper.appendChild(box);
+      box.appendChild(row);
+  })
+  })
