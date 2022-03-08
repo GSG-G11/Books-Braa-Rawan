@@ -13,7 +13,7 @@ else if(!process.env.DB_URL){
     throw new Error ('database not found')
 }
 const connections = new Pool({
-    connectionString:process.env.DB_URL,
+    connectionString:DB_URL,
     ssl : false
 });
 

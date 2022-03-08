@@ -22,7 +22,6 @@ test('test get authors',()=>{
     })
 });
 
-
 test('test post data',()=>{
     return postDat('ali',22,2)
     .then((data)=>{
