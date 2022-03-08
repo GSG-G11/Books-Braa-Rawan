@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/",
-    "dev": "nodemon ./src/",
-    "test": "jest"
+    "start": "cross-env NODE_ENV=production node ./src/",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/",
+    "test": "cross-env NODE_ENV=test jest"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "compression": "^1.7.4",
     "env2": "^2.2.2",
     "express": "^4.17.3",
+    "cross-env": "^7.0.3",
     "pg": "^8.7.3"
   },
   "devDependencies": {
