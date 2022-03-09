@@ -40,12 +40,17 @@ const delBook = (id) => fetch(`/delete/${id}`, {
       authorName.className='author';
       authorName.textContent=e.author;
       info.appendChild(authorName);
+
+      const icon = document.createElement('i');
+      icon.className='fas fa-edit';
+      authorName.appendChild(icon);
   
       const bookPrice = document.createElement('div');
       bookPrice.className='price';
-      bookPrice.textContent=e.price ,'$';
+      bookPrice.textContent=e.price +'$';
       info.appendChild(bookPrice);
-  
+    //   box.appendChild(bookPrice);
+
       const row = document.createElement('div');
       row.className='row2';
       wrapper.appendChild(row);
