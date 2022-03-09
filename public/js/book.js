@@ -1,15 +1,4 @@
-fetch('/author')
-.then(res=> res.json())
-.then(author =>{
-    const select = document.querySelector('#country');
-    author.forEach(e => {
-        const autOption = document.createElement("option");
-        autOption.value=e.id;
-        autOption.textContent=e.name;
-        select.appendChild(autOption);       
-    });
-});
-
+//get books and delete
 const delBook = (id) => fetch(`/delete/${id}`, {
     method: 'DELETE',
     headers: {
@@ -49,7 +38,6 @@ const delBook = (id) => fetch(`/delete/${id}`, {
       bookPrice.className='price';
       bookPrice.textContent=e.price +'$';
       info.appendChild(bookPrice);
-    //   box.appendChild(bookPrice);
 
       const row = document.createElement('div');
       row.className='row2';
@@ -58,6 +46,7 @@ const delBook = (id) => fetch(`/delete/${id}`, {
       const btn = document.createElement('button');
       btn.className='Delete';
       btn.textContent='Delete';
+      //delete
       btn.onclick =()=>{
           console.log(e.id);
           delBook(e.id)
