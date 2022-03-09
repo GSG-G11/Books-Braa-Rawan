@@ -12,6 +12,6 @@ CREATE TABLE books (
 );
 
 INSERT INTO author (name) VALUES ('Braa'),('Rawan'),('Adballah'),('Mohamed'),('Adham');
-INSERT INTO books (name,price,author_id) VALUES ('JS',50,1),('CSS',20,2),('PHP',20,2);
+INSERT INTO books (name,price,author_id) VALUES ('JS',50,1),('CSS',20,2),('PHP',20,3);
 
 COMMIT;
