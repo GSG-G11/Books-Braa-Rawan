@@ -12,13 +12,15 @@ afterAll(()=>connection.end());
 test('test get data',()=>{
     return gitDat()
     .then((data)=>{
-        expect(data.rows.length).toBe(2);
+        expect(data.rows[0].name).toBe('JS');
+        expect(data.rows.length).toBe(3);
     })
 });
 test('test get authors',()=>{
     return gitAut()
     .then((data)=>{
-        expect(data.rows.length).toBe(2);
+        expect(data.rows.length).toBe(5);
+        expect(data.rows[1].name).toBe('Rawan');
     })
 });
 
